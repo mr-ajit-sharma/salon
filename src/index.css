@@ -307,8 +307,41 @@ main {
   top: 45%;
   left: 11%;
 }
+/* serrvice */
+.service-cards{
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  justify-content: space-around;
+}
+.service-card{
+    width: 15rem;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    /* height: 91%; */
+    align-items: center;
+}
+.service-card:hover{
+  display: block;
+}
+.service-img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 35rem;
+  width: 35rem;
+}
+.service-img img{
+  height: 80%;
+  width: 80%;
+}
 
 /* contact section */
+
 .contact-container,
 .main-container {
   height: 100%;
