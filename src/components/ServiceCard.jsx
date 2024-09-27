@@ -1,5 +1,5 @@
 import React from "react";
-import hair from "../assets/intro5.jpg";
+// import hair from "../assets/intro5.jpg";
 
 const ServiceCard = ({ item, index }) => {
   return (

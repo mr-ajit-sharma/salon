@@ -3,7 +3,7 @@ import ServiceCard from './ServiceCard'
 import image1 from '../assets/intro1.jpg'
 import image2 from '../assets/intro2.jpg'
 import image3 from '../assets/intro3.jpg'
-const serviceData=[
+const manServiceData=[
   {
     image:image1,
     title:"Barber service"
@@ -17,13 +17,19 @@ const serviceData=[
     title:"Cutting service"
   },
 ]
+const WomenServiceData=[
+  {
+
+  }
+]
 const ServiceCards = () => {
   return (
     <div className='service-cards'>
-      {serviceData.map((item,index)=>(
+      {manServiceData.map((item,index)=>(
 
         <ServiceCard item={item} index={index}/>
       ))}
+
     </div>
   )
 }

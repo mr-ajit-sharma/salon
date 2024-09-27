@@ -6,7 +6,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Offer from './pages/Offer'
 import Portfolio from './pages/Portfolio'
-import Pricing from './pages/Pricing'
+// import Pricing from './pages/Pricing'
 import Footer from './components/Footer'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
@@ -55,10 +55,10 @@ const App = () => {
           path: '/portfolio',
           element: <Portfolio />
         },
-        {
-          path: '/Pricing',
-          element: <Pricing />
-        },
+        // {
+        //   path: '/Pricing',
+        //   element: <Pricing />
+        // },
         {
           path: '/signin',
           element: <SignIn />
