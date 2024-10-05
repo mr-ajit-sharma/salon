@@ -17,11 +17,6 @@ const manServiceData=[
     title:"Cutting service"
   },
 ]
-const WomenServiceData=[
-  {
-
-  }
-]
 const ServiceCards = () => {
   return (
     <div className='service-cards'>

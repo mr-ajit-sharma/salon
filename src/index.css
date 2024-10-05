@@ -95,6 +95,7 @@ main {
 
 .main-navbar a {
   text-decoration: none;
+  /* border-bottom: none; */
   color: white;
   font-weight: bold;
 }
@@ -104,6 +105,11 @@ main {
   color: var(--theme-color3);
 }
 
+.active {
+  font-weight: bold;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid var(--theme-color2); /* Optional: underline active link */
+}
 /* footer section */
 .footer {
   display: flex;
@@ -145,46 +151,47 @@ main {
 .footer-overview {
   display: flex;
 }
-.testimonal{
-    background: black;
-    padding: 1rem;
-    border: 2px solid palevioletred;
-    box-shadow: inset 0 -3em 3em rgb(161 40 153 / 30%), 0 0 0 1px white, 0.3em 0.3em 1em rgb(175 120 206);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+.testimonal {
+  background: black;
+  padding: 1rem;
+  border: 2px solid palevioletred;
+  box-shadow: inset 0 -3em 3em rgb(161 40 153 / 30%), 0 0 0 1px white,
+    0.3em 0.3em 1em rgb(175 120 206);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.description-container{
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
+.description-container {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
 }
-.description-container button{
-    width: 11rem;
-    border-radius: .5rem;
-    padding: 1rem;
-    border: 2px solid white;
-    background: black;
-    color: white;
-    font-weight: bold;
+.description-container button {
+  width: 11rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 2px solid white;
+  background: black;
+  color: white;
+  font-weight: bold;
 }
-.local{
-    display: flex;
-    width: 80%;
-    justify-content: space-around;
-    align-items: center;
-    /* border: 2px solid red; */
+.local {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 2px solid red; */
 }
-.local .item{
-    border: 2px solid black;
-    padding: 1rem;
-    border-radius: .5rem;
+.local .item {
+  border: 2px solid black;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
-.local .item:hover{
-    border: 2px solid white;
-    transition: all 3000ms;
+.local .item:hover {
+  border: 2px solid white;
+  transition: all 3000ms;
 }
 /* signup and signin section */
 .log-main {
@@ -200,7 +207,8 @@ main {
   width: 50%;
   justify-content: center;
   align-items: center;
-  background: #6e09a8;
+  color: var(--theme-color3);
+  background: var(--theme-color1);
   border-radius: 0.5rem;
 }
 
@@ -230,7 +238,14 @@ main {
   padding: 0.5rem;
   font-size: 1.05rem;
   border-radius: 0.5rem;
-  color: green;
+  color: var(--theme-color1);
+  /* font-weight: bold; */
+}
+.input::placeholder {
+  color: var(--theme-color3);
+  font-weight: 50;
+  /* text-transform: uppercase; */
+  font-size: 0.7em;
 }
 
 .button {
@@ -248,6 +263,8 @@ main {
   background-color: black;
   color: white;
   cursor: pointer;
+  border: 2px solid var(--theme-color3);
+  transition: all 1s ease;
 }
 
 .logo-title {
@@ -301,6 +318,14 @@ main {
   border: none;
   font-weight: bold;
 }
+.home-button:hover {
+  color: var(--theme-color3);
+  /* rgb(110 9 168) 0px 22px 70px 4px */
+  box-shadow: rgba(110, 9, 168, 0.56) 0px 28px 70px 4px;
+  /* background-color: red; */
+  /* border:2px solid #6e09a8; */
+  transition: all 0.8s ease-in-out;
+}
 
 .home-btn-position {
   position: absolute;
@@ -308,23 +333,23 @@ main {
   left: 11%;
 }
 /* serrvice */
-.service-cards{
+.service-cards {
   width: 100%;
   display: flex;
   padding: 1rem;
   justify-content: space-around;
 }
-.service-card{
-    width: 15rem;
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    /* height: 91%; */
-    align-items: center;
+.service-card {
+  width: 15rem;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  /* height: 91%; */
+  align-items: center;
 }
-.service-img{
+.service-img {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -332,11 +357,11 @@ main {
   height: 35rem;
   width: 33rem;
 }
-.service-img img{
+.service-img img {
   height: 80%;
   width: 80%;
 }
-.pricing{
+.pricing {
   background-color: rgb(234, 228, 228);
   width: 50%;
   padding: 1rem;
@@ -347,10 +372,10 @@ main {
   margin: 1rem;
   border-radius: 1rem;
 }
-.pricing h1{
+.pricing h1 {
   margin: 1rem;
 }
-.pricecard{
+.pricecard {
   background-color: var(--theme-color3);
   padding: 1rem;
   display: flex;
@@ -360,31 +385,32 @@ main {
   align-items: center;
   margin: 1rem;
 }
-.pricecard:hover{
-   background: white;
-    /* padding: 1rem; */
-    transition: all 1.5s ease;
-    /* border: 2px solid palevioletred; */
-    box-shadow: inset 0 -3em 3em rgb(161 40 153 / 30%), 0 0 0 1px white, 0.3em 0.3em 1em rgb(175 120 206);
-    color: black;
+.pricecard:hover {
+  background: white;
+  /* padding: 1rem; */
+  transition: all 1.5s ease;
+  /* border: 2px solid palevioletred; */
+  box-shadow: inset 0 -3em 3em rgb(161 40 153 / 30%), 0 0 0 1px white,
+    0.3em 0.3em 1em rgb(175 120 206);
+  color: black;
 }
-.pricecard h3{
-  margin-bottom: .5rem;
+.pricecard h3 {
+  margin-bottom: 0.5rem;
 }
 
-.pricecard .service-container{
+.pricecard .service-container {
   width: 100%;
 }
-.pricecard .service{
+.pricecard .service {
   display: flex;
   justify-content: space-between;
   /* background-color: red; */
   width: 100%;
 }
-.pricecard .service .name{
+.pricecard .service .name {
   color: var(--theme-color2);
 }
-.pricecard .service .price{
+.pricecard .service .price {
   font-weight: bold;
 }
 
@@ -398,19 +424,16 @@ main {
   flex-direction: column;
   align-items: center;
 }
-
 .contact-first {
   position: relative;
   width: 100%;
   padding: 2rem 0;
-  /* Adjust padding as needed */
 }
 
 .contact-img,
 .landing-img {
   width: 35%;
   height: auto;
-  /* Maintain aspect ratio */
   opacity: 0.5;
 }
 
@@ -463,7 +486,6 @@ main {
 .second {
   display: flex;
   width: 95%;
-  /* justify-content: space-between; */
 }
 
 .second-first {
@@ -473,7 +495,6 @@ main {
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   justify-content: space-around;
   padding: 1rem;
-  /* border: 2px solid red; */
   margin: 0 0 1rem 0;
 }
 
@@ -487,14 +508,11 @@ main {
 .second-first-second {
   padding: 1rem;
   width: 60%;
-  /* background-color: yellow; */
 }
 
 .service-one {
   width: 100%;
   padding: 1rem;
-  /* border-radius: .5rem; */
-  /* background-color: #6e09a8; */
   border-bottom: 2px solid var(--theme-color2);
   font-size: 1.2rem;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -524,9 +542,6 @@ main {
   border-radius: 0.5rem;
   border: none;
   outline: none;
-}
-
-.service-two-services > select option {
 }
 
 .second-first-first .service-item {
