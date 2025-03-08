@@ -7,6 +7,7 @@ import FirstSelection from "./FirstSelection";
 import SecondSelection from "./SecondSelection";
 import ThirdSelection from "./ThirdSelection";
 import FourthSelection from "./FourthSelection";
+
 const Appointement = () => {
   const [activeSelection, setActiveSelection] = useState(0);
   const handleSelectionChange = (index) => {
@@ -43,7 +44,6 @@ const Appointement = () => {
               <Link
                 to="/first"
                 className="service-item"
-                onclick={() => handleSelectionChange(0)}
               >
                 <div>
                   <box-icon
@@ -66,7 +66,6 @@ const Appointement = () => {
               <Link
                 to="/second"
                 className="service-item"
-                onClick={() => handleSelectionChange(1)}
               >
                 <div>
                   <box-icon
@@ -88,7 +87,6 @@ const Appointement = () => {
               </Link>
               <Link
                 to="/third"
-                onClick={() => handleSelectionChange(2)}
                 className="service-item"
               >
                 <div>
@@ -111,7 +109,6 @@ const Appointement = () => {
               </Link>
               <Link
                 to="/fourth"
-                onClick={() => handleSelectionChange(3)}
                 className="service-item"
               >
                 <div>
@@ -134,7 +131,7 @@ const Appointement = () => {
               </Link>
             </form>
           </div>
-          {renderSelectionComponent()}
+          {/* {renderSelectionComponent()} */}
         </div>
         <div className="second-second">
           {/* <Schedule /> */}
