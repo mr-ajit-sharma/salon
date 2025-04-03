@@ -17,12 +17,12 @@ const useAuthStore = create(
       signup: async (userData) => {
         set({ isLoading: true, error: null });
         try {
-          const response = await fetch('VITE_SERVER_URL/api/user/register', {
+          const response = await fetch('https://salonebackend.onrender.com/api/user/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userData),
           });
-          console.log(response, '                      response 25')
+          console.log(response, ' response 25')
           
           const data = await response.json();
           
