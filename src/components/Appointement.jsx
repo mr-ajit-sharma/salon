@@ -1,140 +1,67 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import appointement from "../assets/contact.jpg";
-// import Schedule from './Schedule'
 import { ScheduleOne, ScheduleTwo } from "./Schedule";
 import FirstSelection from "./FirstSelection";
 import SecondSelection from "./SecondSelection";
 import ThirdSelection from "./ThirdSelection";
 import FourthSelection from "./FourthSelection";
 
+const selections = [
+  { id: 0, name: "Service Selection", icon: "shopping-bag", component: <FirstSelection /> },
+  { id: 1, name: "Date-Time", icon: "timer", component: <SecondSelection /> },
+  { id: 2, name: "Your Information", icon: "info-circle", component: <ThirdSelection /> },
+  { id: 3, name: "Payments", icon: "wallet-alt", component: <FourthSelection /> },
+];
+
 const Appointement = () => {
   const [activeSelection, setActiveSelection] = useState(0);
-  const handleSelectionChange = (index) => {
-    setActiveSelection(index);
-  };
-  const renderSelectionComponent = () => {
-    switch (activeSelection) {
-      case 0:
-        return <FirstSelection />;
-      case 1:
-        return <SecondSelection />;
-      case 2:
-        return <ThirdSelection />;
-      case 3:
-        return <FourthSelection />;
-      default:
-        return null;
-    }
-  };
+  
+
   return (
     <div className="contact-container">
+      {/* Appointment Header */}
       <div className="first contact-first">
         <div className="contact-img-container">
-          <img src={appointement} alt="" className="contact-img" />
+          <img src={appointement} alt="Appointment" className="contact-img" />
         </div>
         <div className="contact-data">
-          <h1>Book an Appointement</h1>
+          <h1>Book an Appointment</h1>
         </div>
       </div>
+
+      {/* Selection Process */}
       <div className="second">
         <div className="second-first">
           <div className="second-first-first">
-            <form action="">
-              <Link
-                to="/first"
-                className="service-item"
-              >
-                <div>
-                  <box-icon
-                    color="#6e09a8"
-                    type="solid"
-                    animation="fade-left"
-                    rotate="180"
-                    name="shopping-bag"
-                  ></box-icon>
-                </div>
-                <div>
-                  <h3>Service-Selection</h3>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={activeSelection === 0}
-                  readOnly
-                />
-              </Link>
-              <Link
-                to="/second"
-                className="service-item"
-              >
-                <div>
-                  <box-icon
-                    name="timer"
-                    color="#6e09a8"
-                    animation="fade-left"
-                    rotate="180"
-                    type="solid"
-                  ></box-icon>
-                </div>
-                <div>
-                  <h3>Date-time</h3>
-                </div>
-                <input
-                  checked={activeSelection === 1}
-                  type="checkbox"
-                  readOnly
-                />
-              </Link>
-              <Link
-                to="/third"
-                className="service-item"
-              >
-                <div>
-                  <box-icon
-                    name="info-circle"
-                    color="#6e09a8"
-                    animation="fade-left"
-                    rotate="180"
-                    type="solid"
-                  ></box-icon>
-                </div>
-                <div>
-                  <h3>Your information</h3>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={activeSelection === 2}
-                  readOnly
-                />
-              </Link>
-              <Link
-                to="/fourth"
-                className="service-item"
-              >
-                <div>
-                  <box-icon
-                    name="wallet-alt"
-                    type="solid"
-                    color="#6e09a8"
-                    animation="fade-left"
-                    rotate="180"
-                  ></box-icon>
-                </div>
-                <div>
-                  <h3>Payments</h3>
-                </div>
-                <input
-                  checked={activeSelection === 3}
-                  readOnly
-                  type="checkbox"
-                />
-              </Link>
+            <form>
+              {selections.map(({ id, name, icon }) => (
+                <Link 
+                  key={id} 
+                  to={`/appointement/${id}`} 
+                  className="service-item"
+                  onClick={() => setActiveSelection(id)}
+                >
+                  <div>
+                    <box-icon name={icon} color="#6e09a8" animation="fade-left" rotate="180" type="solid"></box-icon>
+                  </div>
+                  <div>
+                    <h3>{name}</h3>
+                  </div>
+                  <input type="checkbox" checked={activeSelection === id} readOnly />
+                </Link>
+              ))}
             </form>
           </div>
-          {/* {renderSelectionComponent()} */}
+          
+          {/* Render Active Selection Component */}
+          <div className="selection-content">
+            {selections[activeSelection].component}
+          </div>
         </div>
+
+        {/* Schedule Information */}
         <div className="second-second">
-          {/* <Schedule /> */}
           <div className="anti-location-container">
             <div className="location">
               <p>Branch-1</p>
