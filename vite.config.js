@@ -13,4 +13,7 @@ export default defineConfig({
   //     }
   //   }
   // }
+  server:{
+    cors:process.env.VITE_SERVER_URL
+  }
 })
