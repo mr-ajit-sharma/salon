@@ -1,6 +1,7 @@
+import axios from 'axios';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
+// export const backendUrl = import.meta.env.VITE_SERVER_URL;
 const useAuthStore = create(
   persist(
     (set, get) => ({
@@ -12,31 +13,32 @@ const useAuthStore = create(
 
       // Reset error state
       clearError: () => set({ error: null }),
-
-      // Sign up new user
       signup: async (userData) => {
         set({ isLoading: true, error: null });
         try {
-          const response = await fetch('/api/user/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData),
+          // Use axios for making POST request
+          const response = await axios.post(`https://salonebackend.onrender.com`, userData, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
           });
-          console.log(response, ' response 25')
-          
-          const data = await response.json();
-          
-          if (!response.ok) {
+
+          console.log(response, ' response 25');
+
+          // Assuming the response data structure is the same as with fetch
+          const data = response.data;
+          console.log(data, '            30')
+          if (response.status !== 200) {
             throw new Error(data.message || 'Signup failed');
           }
-          
+
           set({
             user: data.user,
             token: data.token,
             isAuthenticated: true,
             isLoading: false,
           });
-          
+
           return data;
         } catch (error) {
           set({ isLoading: false, error: error.message });
@@ -53,20 +55,20 @@ const useAuthStore = create(
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials),
           });
-          
+
           const data = await response.json();
-          
+
           if (!response.ok) {
             throw new Error(data.message || 'Authentication failed');
           }
-          
+
           set({
             user: data.user,
             token: data.token,
             isAuthenticated: true,
             isLoading: false,
           });
-          
+
           return data;
         } catch (error) {
           set({ isLoading: false, error: error.message });
@@ -115,18 +117,18 @@ const useAuthStore = create(
               'Content-Type': 'application/json',
             },
           });
-          
+
           const data = await response.json();
-          
+
           if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch profile');
           }
-          
+
           set({
             user: data,
             isLoading: false,
           });
-          
+
           return data;
         } catch (error) {
           set({ isLoading: false, error: error.message });
@@ -152,18 +154,18 @@ const useAuthStore = create(
             },
             body: JSON.stringify(profileData),
           });
-          
+
           const data = await response.json();
-          
+
           if (!response.ok) {
             throw new Error(data.message || 'Failed to update profile');
           }
-          
+
           set({
             user: { ...user, ...data },
             isLoading: false,
           });
-          
+
           return data;
         } catch (error) {
           set({ isLoading: false, error: error.message });
@@ -189,13 +191,13 @@ const useAuthStore = create(
             },
             body: JSON.stringify(appointmentData),
           });
-          
+
           const data = await response.json();
-          
+
           if (!response.ok) {
             throw new Error(data.message || 'Failed to book appointment');
           }
-          
+
           set({ isLoading: false });
           return data;
         } catch (error) {
@@ -220,13 +222,13 @@ const useAuthStore = create(
               'Content-Type': 'application/json',
             },
           });
-          
+
           const data = await response.json();
-          
+
           if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch appointments');
           }
-          
+
           set({ isLoading: false });
           return data;
         } catch (error) {
@@ -252,12 +254,12 @@ const useAuthStore = create(
               'Content-Type': 'application/json',
             },
           });
-          
+
           if (!response.ok) {
             const data = await response.json();
             throw new Error(data.message || 'Failed to cancel appointment');
           }
-          
+
           set({ isLoading: false });
           return true;
         } catch (error) {
@@ -272,11 +274,11 @@ const useAuthStore = create(
         try {
           const response = await fetch('/api/services');
           const data = await response.json();
-          
+
           if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch services');
           }
-          
+
           set({ isLoading: false });
           return data;
         } catch (error) {
@@ -298,10 +300,10 @@ const useAuthStore = create(
     }),
     {
       name: 'auth-storage', // name of the item in storage
-      partialize: (state) => ({ 
-        user: state.user, 
-        token: state.token, 
-        isAuthenticated: state.isAuthenticated 
+      partialize: (state) => ({
+        user: state.user,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated
       }), // only store these fields
     }
   )
