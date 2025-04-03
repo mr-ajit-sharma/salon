@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useAuthStore from '../zustand/store'; // Adjust path as needed
+
 const SignUp = () => {
   // Use a single form state object
   const [formData, setFormData] = useState({
@@ -57,13 +58,13 @@ const SignUp = () => {
     if (!validateForm()) return;
 
     try {
-      // Create user object from form data
+      // Hard-code the role to 2 (You can change it as needed)
       const userData = {
         name: fullname,
         email: email,
         password: password,
         number: parseInt(number, 10),
-        role: 2 // Default role as user
+        role: 2 // Hard-coded role here
       };
       
       // Use the Zustand store's signup function
