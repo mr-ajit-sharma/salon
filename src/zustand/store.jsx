@@ -17,7 +17,7 @@ const useAuthStore = create(
         set({ isLoading: true, error: null });
         try {
           // Use axios for making POST request
-          const response = await axios.post(`https://salonebackend.onrender.com`, userData, {
+          const response = await axios.post(`https://salonebackend.onrender.com/api/user/register`, userData, {
             headers: {
               'Content-Type': 'application/json',
             },
